@@ -1,0 +1,27 @@
+
+<div class="felx flex-col w-full mx-auto py-5">
+
+  <div id="error_messages" class="mb-5">
+    <%= render 'errors', object: @post %>
+  </div>
+
+<%= form_with model: @post, data: { turbo: true } do |form| %>
+  <div class="field">
+    <%= form.label :title, value: 'タイトル', class:"block text-md font-medium leading-6 text-slate-900"%>
+    <div class="mt-2">
+    <%= form.text_field :title, class: "block w-full rounded-sm border-0 py-1.5  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-lime-600 sm:text-sm sm:leading-6" %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :body, value: '本文',class:"block text-sm font-medium leading-6 text-slate-900" %>
+    <%= form.text_area :body, class: "block w-full h-48 text-base leading-normal rounded-sm border-0 my-1.5  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-lime-600 sm:text-sm sm:leading-6"  %>
+  </div>
+
+
+  <div class="flex flex-row justify-end actions mt-5 space-x-2">
+    <%= link_to "キャンセル", posts_path, class:"block bg-white inline-flex items-center rounded-md ring-1 px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"%>
+    <%= form.submit "投稿", class: "inline-flex items-center rounded-md bg-lime-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-lime-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-600" %>
+  </div>
+<% end %>
+</div>

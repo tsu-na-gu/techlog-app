@@ -1,0 +1,10 @@
+<% if object.errors.any? %>
+  <div id="error_explanation">
+    <h2 class="text-md text-red-700">投稿に<%= pluralize(@post.errors.count, "個の問題") %>があります</h2>
+    <ul class="list-disc">
+      <% object.errors.full_messages.each do |message| %>
+        <li class="ml-5 text-red-600 text-sm"><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
