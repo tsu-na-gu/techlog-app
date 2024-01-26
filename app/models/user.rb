@@ -15,8 +15,5 @@ class User < ApplicationRecord
     errors.add(:base, '名前は必須項目です。') if name.blank?
   end
 
-  def self.ransackable_attributes(auth_object = nil)
-    super
-  end
 
 end

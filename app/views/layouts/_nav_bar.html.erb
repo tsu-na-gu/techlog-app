@@ -1,0 +1,15 @@
+<div class="bg-red-600 h-2 w-full"></div>
+<div class="bg-amber-100">
+  <div class="flex flex-row justify-between w-full h-24 items-center">
+    <div class="flex flex-row items-center space-x-5 ml-5">
+    <%= image_tag "FakeCompanyLogo.png", class: "mx-auto h-10 w-auto" %>
+    <h2 class="text-amber-950 font-semibold text-4xl">Company Tech Support Forum</h2>
+    </div>
+    <% if user_signed_in? %>
+      <div class="flex flex-row mx-5 space-x-5">
+        <%= link_to 'アカウント設定', edit_user_registration_path, class: "rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"%>
+        <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: "block rounded-md bg-amber-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600" %>
+    <% end %>
+    </div>
+  </div>
+</div>

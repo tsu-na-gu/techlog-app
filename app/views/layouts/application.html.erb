@@ -12,10 +12,17 @@
   </head>
 
   <body class="bg-amber-50">
-    <%= turbo_frame_tag "flash" do %>
-      <%= render "layouts/flash" %>
+  <div class="relative">
+    <div id="flash" class="flash-messages">
+      <%= render 'layouts/flash' %>
+    </div>
+  </div>
+  <div>
+    <% unless @hide_nav_bar %>
+      <%= render 'layouts/nav_bar' %>
     <% end %>
-    <main>
+  </div>
+  <main>
       <%= yield %>
     </main>
   </body>

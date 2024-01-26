@@ -1,0 +1,5 @@
+<%= turbo_stream.replace @comment do %>
+  <%= render @comment, post:@post %>
+<% end %>
+
+<%= render_turbo_stream_flash_messages %>

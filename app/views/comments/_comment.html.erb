@@ -1,0 +1,19 @@
+ <%= turbo_frame_tag comment do %>
+  <div class="flex flex-col justify-end mx-6 my-2 bg-white border-b border-r border-gay-200">
+      <div class="text-gray-500 text-sm pt-2"><span class="px-2"><%= comment.user.name %></span><span class="ml-5"><%= time_ago_in_words(comment.created_at) %>前に投稿</span></div>
+      <p class="px-2 py-2 text-mb text-slate-700 w-full mt-2"><%= comment.body %></p>
+<% if comment.user == current_user %>
+  <div class="flex flex-row mb-2 space-x-2 ml-auto mr-2" >
+    <%= button_to "削除",
+                  post_comment_path(comment.post, comment),
+                  method: :delete,
+                  class: "block rounded-md bg-slate-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600",
+                  data: { turbo_confirm: "本当に削除していいですか？" }
+    %>
+    <%= link_to "編集",
+                edit_post_comment_path(comment.post, comment),
+                class: "block rounded-md bg-slate-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600" %>
+  </div>
+<% end %>
+  </div>
+ <% end %>

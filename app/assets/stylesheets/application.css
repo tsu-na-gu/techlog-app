@@ -12,3 +12,24 @@
  *
  *= require_self
  */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+.flash-messages {
+    position: fixed;
+    top: 10px; /* 上からの距離 */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+.fade-out {
+    animation: fadeOut 2s ease-out forwards;
+}
+
+
