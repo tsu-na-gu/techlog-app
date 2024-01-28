@@ -1,20 +1,16 @@
-User.create!(
-  name: 'SATOU HIROAKI',
-  email: 'hiroakisatou@outlook.com',
-  password:'password0123',
-  password_confirmation:'password0123',
-  admin: true)
-
-AdminUser.create!(
-  email: 'hiroakissastou@outlook.com',
-  password: 'password0123',
-  password_confirmation: 'password0123')
+# User.create!(
+#   name: '佐藤　博昭',
+#   email: 'hiroakisatou@outlook.com',
+#   password:"password",
+#   password_confirmation: "password"
+# )
 
 20.times do
   User.create!(
     name: Faker::Name.name,
     email: Faker::Internet.email,
-    password: Faker::Internet.password(min_length: 8)
+    password:"password",
+    password_confirmation: "password"
   )
 end
 
@@ -47,16 +43,7 @@ Post.create!(
   title: "新しいJavaScriptフレームワークの選定",
   body: "新しいプロジェクトで使用するJavaScriptフレームワークの選定に頭を悩ませています。現在、Vue.jsとReactのどちらを選ぶかで迷っています。プロジェクトは中規模で、チーム内にはJavaScriptの初学者もいます。どちらのフレームワークが学習曲線や開発速度の面で優れていると思いますか？"
 )
-Post.create!(
-  user_id: User.all.sample.id,
-  title: "Word文書の効率的な編集技術",
-  body: "この記事では、Microsoft Wordの高度な編集機能やショートカットキーを紹介し、文書作成の効率を向上させる方法を解説します。"
-)
-Post.create!(
-  user_id: User.all.sample.id,
-  title: "Excelでのデータ分析の基本",
-  body: "Excelを使ったデータ分析の基本的なテクニックを紹介。ピボットテーブルや関数の使用方法に焦点を当てます。"
-)
+
 
 comments = ["N+1クエリ問題に対処するために、includes メソッドを使って関連するオブジェクトを事前にロードすると良いでしょう。","パフォーマンスのボトルネックを特定するために、New RelicやSkylightといったパフォーマンスモニタリングツールの利用をお勧めします。"]
 comments.each do |comment|
@@ -95,15 +82,6 @@ comments.each do |comment|
   Comment.create!(
     user_id: User.all.sample.id,
     post_id: Post.find(5).id,
-    body: comment
-  )
-end
-
-comments = ["特にスタイル機能の説明が役立ちました！","ショートカットキーのセクションが非常に有用です。時間節約になりますね！"]
-comments.each do |comment|
-  Comment.create!(
-    user_id: User.all.sample.id,
-    post_id: Post.find(6).id,
     body: comment
   )
 end

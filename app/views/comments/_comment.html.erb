@@ -1,5 +1,5 @@
  <%= turbo_frame_tag comment do %>
-  <div class="flex flex-col justify-end mx-6 my-2 bg-white border-b border-r border-gay-200">
+  <div id="comment" class="flex flex-col justify-end mx-6 my-2 bg-white border-b border-r border-gay-200">
       <div class="text-gray-500 text-sm pt-2"><span class="px-2"><%= comment.user.name %></span><span class="ml-5"><%= time_ago_in_words(comment.created_at) %>前に投稿</span></div>
       <p class="px-2 py-2 text-mb text-slate-700 w-full mt-2"><%= comment.body %></p>
 <% if comment.user == current_user %>

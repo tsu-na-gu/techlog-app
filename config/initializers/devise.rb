@@ -14,7 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '83cc107cefc93c9cc7f825ff84af089c8472b5ae2cf42571d01e5c1fd6a737b967e573b7659ac790ffa0c256f87cd43d85de7f4e59181a5ada747323738b37bc'
+  # config.secret_key = '7108f8d0583449f69211da68246aa1c61eda2bd4e9d7fd5fe156a137ce87d937a353124e6db6df9cea801d77ad5088b1e54a1574be9382cc87ee199f4c52576d'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -97,7 +97,7 @@ Devise.setup do |config|
   # Notice that if you are skipping storage for all authentication paths, you
   # may want to disable generating routes to Devise's sessions controller by
   # passing skip: :sessions to `devise_for` in your config/routes.rb
-  config.skip_session_storage = [:http_auth, :params_auth]
+  config.skip_session_storage = [:http_auth]
 
   # By default, Devise cleans up the CSRF token on authentication to
   # avoid CSRF token fixation attacks. This means that, when using AJAX
@@ -126,7 +126,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '29636336c570c03926d271cc0af242c97532db2c2ad4e8f89a8cef35b7362aa69715a1e8bc5ab9d1b6ac89befafd8119174b960cbd04464a7a1a3907752a35bf'
+  # config.pepper = '0912e2352f2158bae4259cd1d6e616cd69f9d78d22ce925ffa8c71cca84d07084901cdaf610a2dc11c72a9367c4a03d48e41af06d6e26790fcd48db3b20ea850'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -157,7 +157,7 @@ Devise.setup do |config|
   # initial account confirmation) to be applied. Requires additional unconfirmed_email
   # db field (see migrations). Until confirmed, new email is stored in
   # unconfirmed_email column, and copied to email column on successful confirmation.
-  #  config.reconfirmable = true
+  config.reconfirmable = true
 
   # Defines which key will be used when confirming an account
   # config.confirmation_keys = [:email]
@@ -304,7 +304,6 @@ Devise.setup do |config|
   # Note: These might become the new default in future versions of Devise.
   config.responder.error_status = :unprocessable_entity
   config.responder.redirect_status = :see_other
-  # config.session_store :cookie_store, key: '_your_app_session'
 
   # ==> Configuration for :registerable
 

@@ -7,12 +7,12 @@
 
   <div class="field mt-5 mb-5">
     <%= f.label :name, class: "block text-sm font-medium text-gray-900"%><br />
-    <%= f.text_field :name, class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-600 sm:text-sm sm:leading-6" %>
+    <%= f.text_field :name, class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6" %>
   </div>
 
   <div class="field  mt-5 mb-5">
     <%= f.label :email, class: "block text-sm font-medium text-gray-900" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-600 sm:text-sm sm:leading-6" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -21,7 +21,7 @@
 
   <div class="field  mt-5 mb-5">
     <div class="block text-sm font-medium text-gray-900"><%= f.label :password %> (変更しない場合は空白のままにしておいてください)</div><br />
-    <%= f.password_field :password, autocomplete: "new-password",class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-600 sm:text-sm sm:leading-6" %>
+    <%= f.password_field :password, autocomplete: "new-password",class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6" %>
     <% if @minimum_password_length %>
       <br />
       <em><%= @minimum_password_length %> 文字以上必要です</em>
@@ -30,16 +30,16 @@
 
   <div class="field mt-5 mb-5">
     <%= f.label :password_confirmation, class:"block text-sm font-medium text-gray-900"%><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-600 sm:text-sm sm:leading-6" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6" %>
   </div>
 
   <div class="field mt-5 mb-5">
     <div class="block text-sm font-medium text-gray-900"><%= f.label :current_password %> (変更を確認するために現在のパスワードが必要です)</div><br />
-    <%= f.password_field :current_password, autocomplete: "current-password", class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-600 sm:text-sm sm:leading-6" %>
+    <%= f.password_field :current_password, autocomplete: "current-password", class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6" %>
   </div>
 
-      <div class="actions flex w-full justify-center rounded-md bg-amber-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-amber-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600">
-        <%= f.submit "更新", class:"block" %>
+      <div>
+        <%= f.submit "更新", class:"block actions flex w-full justify-center rounded-md bg-amber-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-amber-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600" %>
       </div>
       <div class="field mt-5 mb-5">
         <%= link_to "< 戻る", :back, class:" text-sm font-semibold leading-7 text-amber-60" %>

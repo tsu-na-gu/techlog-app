@@ -25,10 +25,11 @@
 </div>
 <div class="flex flex-col ">
   <% comments = post.comments %>
+  <%  %>
       <%= content_tag(:p, "コメント", class:"mt-2 ml-6 pl-2") if comments.any? %>
   <%= turbo_stream_from "comments" %>
   <%= turbo_frame_tag nested_dom_id(post, "comments") do %>
-      <%= render comments %>
+      <%= render comments if comments.any? %>
     <% end %>
   <div class="mt-2 ml-auto <%= "mr-6" if comments.any? %>">
     <%= link_to "コメントの追加",

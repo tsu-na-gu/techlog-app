@@ -16,7 +16,19 @@ Rails.application.configure do
   config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
 
-  # Ensures that a master key has been made available in ENV["RAILS_MASTER_KEY"], config/master.key, or an environment
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.delivery_method = :smtp
+
+  Rails.application.routes.default_url_options = { host: 'board.tsu-na-gu.site', port: 3000 }
+
+  ActionMailer::Base.smtp_settings = {
+    :port           => 587,
+    :address        => 'smtp.mailgun.org',
+    :user_name      =>  ENV[MAIL_USER_NAME],
+    :password       =>  ENV[MAIL_PASSWORD],
+    :domain         => "board.tsu-na-gu.site",
+    :authentication => :plain,
+  }# Ensures that a master key has been made available in ENV["RAILS_MASTER_KEY"], config/master.key, or an environment
   # key such as config/credentials/production.key. This key is used to decrypt credentials (and other encrypted files).
   # config.require_master_key = true
 
