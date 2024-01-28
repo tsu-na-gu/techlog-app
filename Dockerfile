@@ -1,13 +1,18 @@
-# Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
-ARG RUBY_VERSION=3.2.2
-FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
+## Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
+#ARG RUBY_VERSION=3.2.2
+#FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
+FROM node:alpine
 
 # Rails app lives here
-WORKDIR /rails
+WORKDIR /usr/app
 
-RUN apt-get update -qq
-RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
-&& apt-get install -y nodejs
+COPY ./ ./
+RUN npm install
+
+CMD ["npm", "start"]
+
+RUN apk add --update ruby ruby-io-console ruby-json ruby-bundler
+
 
 # Set production environment
 ENV RAILS_ENV="production" \
