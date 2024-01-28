@@ -14,6 +14,11 @@ ENV RAILS_ENV="production" \
     BUNDLE_PATH="/usr/local/bundle" \
     BUNDLE_WITHOUT="development"
 
+RUN apt-get update -qq
+RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
+&& apt-get install -y nodejs
+RUN npm install --global yarn
+
 
 # Throw-away build stage to reduce size of final image
 FROM base as build
