@@ -1,4 +1,19 @@
-# syntax = docker/dockerfile:1
+FROM ruby:2.7
+
+# Node.jsのインストール
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - \
+    && apt-get install -y nodejs
+
+# 作業ディレクトリの設定
+WORKDIR /app
+
+# RubyのGemなどの依存関係のインストール
+COPY Gemfile /app/Gemfile
+COPY Gemfile.lock /app/Gemfile.lock
+RUN bundle install
+
+# アプリケーションのコードをコピー
+COPY . /app
 
 # Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
 ARG RUBY_VERSION=3.2.2
