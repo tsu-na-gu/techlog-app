@@ -1,9 +1,6 @@
 <div class="flex justify-center items-center mt-5">
   <% flash.each do |flash_type, message| %>
-    <div class="mx-auto fade-out bg-gray-900 text-white opacity-100 font-bold py-2 px-4 rounded-xl"
-        data-controller="removals"
-         data-action="animationend->removals#remove"
-    >
+    <div class="mx-auto fade-out bg-gray-900 text-white opacity-100 font-bold py-2 px-4 rounded-xl" >
 
       <%= message %>
     </div>
