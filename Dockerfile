@@ -1,12 +1,21 @@
 # syntax = docker/dockerfile:1
+FROM node:12 as node
 
 # Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
 ARG RUBY_VERSION=3.2.2
 FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
 
-RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - \
-    && apt-get update \
-    && apt-get install -y nodejs
+
+# ワーキングディレクトリを指定する
+WORKDIR /src
+# マルチステージビルドでrubyコンテナにnodeとnpmを追加する
+COPY --from=node /usr/local/bin/node /usr/local/bin/
+COPY --from=node /usr/local/lib/node_modules/ /usr/local/lib/node_modules/
+
+RUN ln -fs /usr/local/bin/node /usr/local/bin/nodejs \
+    && ln -fs /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm \
+    && ln -fs /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/np \
+
 # Rails app lives here
 WORKDIR /rails
 
