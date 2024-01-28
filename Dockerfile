@@ -11,9 +11,12 @@ ENV RAILS_ENV="production" \
     BUNDLE_PATH="/usr/local/bundle" \
     BUNDLE_WITHOUT="development"
 
-
 # Throw-away build stage to reduce size of final image
 FROM base as build
+
+# Node.jsとnpmのインストール
+RUN curl -sL https://deb.nodesource.com/setup_current.x | bash - \
+    && apt-get install -y nodejs
 
 # Install packages needed to build gems
 RUN apt-get update -qq && \
@@ -33,7 +36,6 @@ RUN bundle exec bootsnap precompile app/ lib/
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
-
 
 # Final stage for app image
 FROM base
