@@ -24,8 +24,8 @@ Rails.application.configure do
   ActionMailer::Base.smtp_settings = {
     :port           => 587,
     :address        => 'smtp.mailgun.org',
-    :user_name      =>  ENV[MAIL_USER_NAME],
-    :password       =>  ENV[MAIL_PASSWORD],
+    :user_name      =>  "postmaster@sandbox4eb80695123e40b9ab86b71c7268705e.mailgun.org",
+    :password       =>  "ca1078a7d459da8ecabfe0e09cf9fdca-1900dca6-2bfe51ed",
     :domain         => "board.tsu-na-gu.site",
     :authentication => :plain,
   }# Ensures that a master key has been made available in ENV["RAILS_MASTER_KEY"], config/master.key, or an environment
