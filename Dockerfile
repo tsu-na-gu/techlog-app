@@ -2,10 +2,13 @@
 ARG RUBY_VERSION=3.2.2
 FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
 
+FROM node@sha256:b2da3316acdc2bec442190a1fe10dc094e7ba4121d029cb32075ff59bb27390a
 
 # Rails app lives here
 WORKDIR /rails
-
+COPY . /rails
+RUN npm install
+CMD "npm" "start"
 
 # Set production environment
 ENV RAILS_ENV="production" \
