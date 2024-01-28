@@ -1,7 +1,4 @@
 # Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
-FROM node:16.20.0-bullseye as node
-
-
 ARG RUBY_VERSION=3.2.2
 FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
 
