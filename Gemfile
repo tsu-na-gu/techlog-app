@@ -45,7 +45,6 @@ gem 'tailwindcss-rails'
 
 gem "devise"
 
-
 gem 'warden'
 
 gem 'devise-i18n'
