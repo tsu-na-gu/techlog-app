@@ -53,7 +53,6 @@ gem 'faker'
 
 gem 'sassc', '~> 2.0'
 
-gem "cssbundling-rails"
 
 gem "capybara"
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
@@ -70,6 +69,9 @@ group :development, :test do
   gem "foreman"
 
   gem "sidekiq"
+
+  gem "cssbundling-rails"
+
 
 end
 
