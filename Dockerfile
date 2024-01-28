@@ -1,16 +1,14 @@
 # Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
-
-FROM node@sha256:b2da3316acdc2bec442190a1fe10dc094e7ba4121d029cb32075ff59bb27390a
-WORKDIR /bin
-COPY . /bin
-RUN npm install
-CMD "npm" "start"
-
 ARG RUBY_VERSION=3.2.2
 FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
 
 # Rails app lives here
 WORKDIR /rails
+
+RUN apt-get update -qq
+RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
+&& apt-get install -y nodejs
+RUN npm install --global yarn
 
 # Set production environment
 ENV RAILS_ENV="production" \
