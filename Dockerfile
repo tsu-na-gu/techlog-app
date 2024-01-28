@@ -9,14 +9,17 @@ WORKDIR /rails
 ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development"
+    BUNDLE_WITHOUT="development test"
 
 # Throw-away build stage to reduce size of final image
 FROM base as build
 
-# Node.jsとnpmのインストール
-RUN curl -sL https://deb.nodesource.com/setup_current.x | bash - \
-    && apt-get install -y nodejs
+# curlとNode.jsのインストールのために必要なパッケージをインストール
+RUN apt-get update -qq && \
+    apt-get install -y curl gnupg2 && \
+    curl -sL https://deb.nodesource.com/setup_current.x | bash - && \
+    apt-get install -y nodejs && \
+    rm -rf /var/lib/apt/lists/*
 
 # Install packages needed to build gems
 RUN apt-get update -qq && \
@@ -42,7 +45,7 @@ FROM base
 
 # Install packages needed for deployment
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl libvips postgresql-client && \
+    apt-get install --no-install-recommends -y libvips postgresql-client && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Copy built artifacts: gems, application
