@@ -34,6 +34,9 @@ RUN bundle install && \
 # Copy the main application into the container
 COPY . .
 
+RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+
+
 # Final stage for app image
 FROM base
 
