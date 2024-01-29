@@ -35,7 +35,7 @@ RUN bundle install && \
 COPY . .
 
 # Uncomment to precompile assets (if needed)
-RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+#RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
 # Final stage for app image
 FROM base
