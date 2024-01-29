@@ -1,6 +1,6 @@
 
 # Use an official Ruby runtime as a parent image
-ARG RUBY_VERSION=3.2.2
+ARG RUBY_VERSION=3.0.6
 FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
 
 # Set the working directory in the container
