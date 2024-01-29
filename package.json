@@ -1,5 +1,5 @@
 {
-  "dependencies": {
-    "tailwind": "^4.0.0"
+  "scripts": {
+    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
   }
 }
