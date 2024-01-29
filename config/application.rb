@@ -39,10 +39,6 @@ module SupportBoard
     # config.eager_load_paths << Rails.root.join("extras")
     config.i18n.default_locale = :ja
 
-    # Don't generate system test files.
-    # config.generators do |g|
-    #   g.test_framework :rspec, fixture: true
-    #   g.fixture_replacement :factory_bot, dir: 'spec/factories'
-    # end
+    # Don't generate system test files.h
   end
 end
