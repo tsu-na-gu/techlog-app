@@ -40,9 +40,9 @@ module SupportBoard
     config.i18n.default_locale = :ja
 
     # Don't generate system test files.
-    config.generators do |g|
-      g.test_framework :rspec, fixture: true
-      g.fixture_replacement :factory_bot, dir: 'spec/factories'
-    end
+    # config.generators do |g|
+    #   g.test_framework :rspec, fixture: true
+    #   g.fixture_replacement :factory_bot, dir: 'spec/factories'
+    # end
   end
 end
