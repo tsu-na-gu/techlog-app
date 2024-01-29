@@ -1,4 +1,3 @@
-
 # Use an official Ruby runtime as a parent image
 ARG RUBY_VERSION=3.2.2
 FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
@@ -19,10 +18,11 @@ FROM base as build
 RUN apt-get update -qq && \
     apt-get install -y curl gnupg2 build-essential git libpq-dev libvips pkg-config
 
-# Install Node.js for JavaScript dependency management
-RUN curl -sL https://deb.nodesource.com/setup_current.x | bash - && \
+# Install Node.js (specific version) and npm
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
     apt-get install -y nodejs && \
-    rm -rf /var/lib/apt/lists/*
+    npm -v && \
+    npm cache clean --force
 
 # Copy the Gemfile and Gemfile.lock into the container
 COPY Gemfile Gemfile.lock ./
@@ -34,8 +34,8 @@ RUN bundle install && \
 # Copy the main application into the container
 COPY . .
 
+# Precompile assets
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
-
 
 # Final stage for app image
 FROM base
