@@ -27,7 +27,6 @@
     transform: translateX(-50%);
     z-index: 1000;
 }
-
 .fade-out {
     animation: fadeOut 2s ease-out forwards;
 }
