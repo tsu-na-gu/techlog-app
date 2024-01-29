@@ -1,42 +1,38 @@
-# Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
+
+# Use an official Ruby runtime as a parent image
 ARG RUBY_VERSION=3.2.2
 FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
 
-# Rails app lives here
+# Set the working directory in the container
 WORKDIR /rails
 
-# Set production environment
-#ENV RAILS_ENV="production" \
-#    BUNDLE_DEPLOYMENT="1" \
-#    BUNDLE_PATH="/usr/local/bundle" \
-#    BUNDLE_WITHOUT="development test"
+# Set production environment variables
+ENV RAILS_ENV=production \
+    BUNDLE_DEPLOYMENT=1 \
+    BUNDLE_PATH=/usr/local/bundle \
+    BUNDLE_WITHOUT=development:test
 
-# Throw-away build stage to reduce size of final image
+# Start a new build stage
 FROM base as build
 
-# curlとNode.jsのインストールのために必要なパッケージをインストール
+# Install necessary packages for the application
 RUN apt-get update -qq && \
-    apt-get install -y curl gnupg2 && \
-    curl -sL https://deb.nodesource.com/setup_current.x | bash - && \
+    apt-get install -y curl gnupg2 build-essential git libpq-dev libvips pkg-config
+
+# Install Node.js for JavaScript dependency management
+RUN curl -sL https://deb.nodesource.com/setup_current.x | bash - && \
     apt-get install -y nodejs && \
     rm -rf /var/lib/apt/lists/*
 
-# Install packages needed to build gems
-RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential git libpq-dev libvips pkg-config
-
-# Install application gems
-# Install application gems
-# Install application gems
+# Copy the Gemfile and Gemfile.lock into the container
 COPY Gemfile Gemfile.lock ./
+
+# Install gems
 RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git
 
-# Copy application code
+# Copy the main application into the container
 COPY . .
-
-# Uncomment to precompile assets (if needed)
-#RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
 # Final stage for app image
 FROM base
@@ -44,12 +40,11 @@ FROM base
 # Install packages needed for deployment
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y libvips postgresql-client && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+    rm -rf /var/lib/apt/lists/* /var/cache/apt/archives
 
-# Copy built artifacts: gems, application
+# Copy built artifacts from the previous stage
 COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /rails /rails
 
-# Other setup...
-
+# Specify the command to run on container start
 CMD ["./bin/rails", "server"]
