@@ -73,7 +73,7 @@ group :development, :test do
 
   gem "sidekiq"
 
-
+  gem "bootsnap"
 
 end
 
