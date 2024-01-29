@@ -24,6 +24,9 @@ RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - && \
     npm -v && \
     npm cache clean --force
 
+ENV PATH="/usr/local/bin/npm:${PATH}"
+
+
 # Copy the Gemfile and Gemfile.lock into the container
 COPY Gemfile Gemfile.lock ./
 
