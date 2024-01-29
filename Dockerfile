@@ -19,7 +19,7 @@ RUN apt-get update -qq && \
     apt-get install -y curl gnupg2 build-essential git libpq-dev libvips pkg-config
 
 # Install Node.js (specific version) and npm
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - && \
     apt-get install -y nodejs && \
     npm -v && \
     npm cache clean --force
