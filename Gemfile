@@ -46,8 +46,6 @@ gem 'devise-i18n'
 
 gem 'faker'
 
-gem "sassc",  "~> 2.0"
-
 gem "cssbundling-rails"
 
 gem "bootsnap"
