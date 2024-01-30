@@ -4,7 +4,7 @@ ruby "3.3.0"
 
 gem "rails", "7.1.3"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-# The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
+# Tzzzzzhe original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
 # Use postgresql as the database for Active Record
@@ -39,13 +39,21 @@ gem 'bootsnap', require: false
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 
 # Reduces boot times through caching; required in config/boot.rb
+
 gem 'tailwindcss-rails'
 
 gem "devise"
 
+gem 'warden'
+
 gem 'devise-i18n'
 
 gem 'faker'
+
+gem 'sassc', '~> 2.0'
+
+
+gem "capybara"
 
 gem "cssbundling-rails"
 
