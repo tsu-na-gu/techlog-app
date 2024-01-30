@@ -42,6 +42,7 @@ gem 'bootsnap', require: false
 
 gem "devise"
 
+gem "capybara"
 
 gem 'devise-i18n'
 
