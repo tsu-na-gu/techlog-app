@@ -40,17 +40,13 @@ gem 'bootsnap', require: false
 
 # Reduces boot times through caching; required in config/boot.rb
 
-gem 'tailwindcss-rails'
-
 gem "devise"
 
-gem 'warden'
 
 gem 'devise-i18n'
 
 gem 'faker'
 
-gem 'sassc', '~> 2.0'
 
 
 gem "capybara"
