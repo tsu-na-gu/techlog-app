@@ -39,6 +39,7 @@ gem 'bootsnap', require: false
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 
 # Reduces boot times through caching; required in config/boot.rb
+gem 'tailwindcss-rails'
 
 gem "devise"
 
