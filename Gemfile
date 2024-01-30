@@ -47,9 +47,7 @@ gem 'devise-i18n'
 
 gem 'faker'
 
-
-
-gem "capybara"
+gem "sassc",  "~> 2.0"
 
 gem "cssbundling-rails"
 
